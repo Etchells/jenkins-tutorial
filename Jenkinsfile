@@ -3,17 +3,23 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'echo "Yo Guys"'
+                withMaven(maven: 'maven_3_8_2') {
+                    sh 'mvn clean compile'
+                }
             }
         }
         stage('Test') {
             steps {
-                sh 'echo "Im Testing"'
+                withMaven(maven: 'maven_3_8_2') {
+                    sh 'mvn test'
+                }
             }
         }
         stage('Deploy') {
             steps {
-                sh 'echo "Im Deploing"'
+               withMaven(maven: 'maven_3_8_2') {
+                    sh 'mvn deploy'
+                }
             }
         }
     }
