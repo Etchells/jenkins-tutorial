@@ -5,27 +5,21 @@ pipeline {
         stage ('Compile Stage') {
 
             steps {
-                withMaven(maven : 'maven_3_8_2') {
-                    sh 'mvn clean compile'
-                }
+                echo 'building the application'
             }
         }
 
         stage ('Testing Stage') {
 
             steps {
-                withMaven(maven : 'maven_3_8_2') {
-                    sh 'mvn test'
-                }
+                echo 'testing the application'
             }
         }
 
 
         stage ('Deployment Stage') {
             steps {
-                withMaven(maven : 'maven_3_8_2') {
-                    sh 'mvn deploy'
-                }
+                echo 'deploying the application'
             }
         }
     }
